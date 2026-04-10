@@ -1,0 +1,44 @@
+Icone Profile
+
+https://img.icons8.com/external-creatype-outline-colourcreatype/24/external-account-essential-ui-v4-creatype-outline-colourcreatype.png
+
+Icone Message
+
+https://img.icons8.com/ios/24/facebook-messenger--v1.png
+
+Icônes trois barre 
+
+https://img.icons8.com/ios/24/reminders.png
+
+Icônes vidéo
+
+https://img.icons8.com/material-outlined/24/video.png
+
+Icones home
+
+https://img.icons8.com/plumpy/24/home--v1.png
+
+Icones suivis (abonnées)
+
+https://img.icons8.com/sf-black-filled/24/add-user-male.png
+
+Icones bouton create (upload)
+
+https://img.icons8.com/sf-black/64/plus.png
+
+Icones logout
+
+https://img.icons8.com/pulsar-line/48/exit.png
+
+
+
+Voici le CSS global.
+Analyse-le et corrige-le si nécessaire.
+⚠️ Important :
+Ne supprime aucun élément sur la section" 1. AUTHENTIFICATION (Signup, Signin)"
+, car cela pourrait casser le fonctionnement.
+Ne modifie pas la structure existante.
+Respecte l’organisation actuelle et notre manière de structurer le code.
+Replace simplement les éléments nécessaires à leur bon endroit dans la liste existante.
+Réintègre ou rectifie tout ce qui manque si nécessaire.
+L’objectif est d’obtenir la version finale complète du CSS global, propre, fonctionnelle et prête à être copiée/collée, sans restructurer ni altérer le reste du code.

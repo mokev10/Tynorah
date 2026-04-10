@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tynorah — Sign Up</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #f5f5f5;
+      position: relative; /* nécessaire pour positionner le container */
+    }
+    .container {
+      width: 450px;
+      max-width: 92vw;
+      background: #fff;
+      border-radius: 50px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      position: absolute; /* pour que JS puisse ajuster left/top */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header class="header">
+    <div class="brand">TYNORAH</div>
+    <h1>SIGN UP</h1>
+    <p class="subtitle">Create your account and join the community</p>
+  </header>
+
+  <form id="signup-form" class="content" action="#" method="POST">
+    <!-- Ton formulaire inchangé -->
+    <div class="row">
+      <div class="col">
+        <label for="firstname">First name</label>
+        <input id="firstname" name="firstname" type="text" placeholder="First name" required>
+      </div>
+      <div class="col">
+        <label for="name">Name</label>
+        <input id="name" type="text" placeholder="Name" required>
+      </div>
+    </div>
+
+    <label for="email">Email</label>
+    <input id="email" type="email" placeholder="example@email.com" required>
+
+    <label for="password">Password</label>
+    <input id="password" type="password" placeholder="•••••••••••••" required>
+
+    <label for="confirm-password">Confirm password</label>
+    <input id="confirm-password" type="password" placeholder="•••••••••••••" required>
+
+    <div id="error-message" style="color: red; margin-bottom: 10px;"></div>
+
+    <div class="terms">
+      <input id="agree" type="checkbox" required>
+      <label for="agree" class="terms-label">I agree to the terms</label>
+    </div>
+
+    <p class="consent">
+      By clicking "Sign Up", you agree to our Terms of Service and Privacy Policy
+    </p>
+
+    <button class="btn" type="submit">SIGN UP</button>
+
+    <p class="small">
+      Already have an account? <a href="index.html" class="signin-link">Sign in</a>
+    </p>
+  </form>
+</div>
+
+<script>
+  function centerContainer() {
+    const container = document.querySelector('.container');
+    const winWidth = window.innerWidth;
+    const winHeight = window.innerHeight;
+    const contWidth = container.offsetWidth;
+    const contHeight = container.offsetHeight;
+
+    const left = (winWidth - contWidth) / 2;
+    const top = (winHeight - contHeight) / 2;
+
+    container.style.left = left + 'px';
+    container.style.top = top + 'px';
+  }
+
+  window.addEventListener('load', centerContainer);
+  window.addEventListener('resize', centerContainer);
+
+    
+</script>
+
+</body>
+</html>

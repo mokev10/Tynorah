@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Messages - Tynorah</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="feed-body messages-page">
+
+    <!-- En-tête (Visible surtout sur mobile) -->
+    <header class="profile-header-top" id="msg-mobile-header">
+        <a href="feed.html" class="back-button" aria-label="Retour au fil d'actualité">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+        </a>
+        <div class="profil-title">MESSAGES</div>
+        <button class="icon-btn" style="width: 40px; height: 40px; display:flex; justify-content:center; align-items:center;">
+            <img src="https://img.icons8.com/ios-glyphs/24/000000/edit.png" alt="Nouveau message" style="width: 20px;">
+        </button>
+    </header>
+
+    <main class="messages-layout">
+        
+        <!-- PANNEAU GAUCHE : Liste des conversations -->
+        <aside class="conversations-list" id="conv-list">
+            <!-- Barre de recherche interne aux messages -->
+            <div class="msg-search-bar">
+                <input type="text" placeholder="Rechercher un message...">
+            </div>
+
+            <!-- Conversation 1 (Non lue) -->
+            <div class="chat-item unread" onclick="openMobileChat()">
+                <img src="https://www.hebergeur-image.fr/uploads/20260311/57adf78bf8f1d8cbd151e48b9839f9eaba9f953b.jpg" alt="Alpha_Design" class="chat-avatar">
+                <div class="chat-preview">
+                    <span class="chat-name">Alpha_Design</span>
+                    <span class="chat-last-msg">Salut ! Super ton dernier post 👏</span>
+                </div>
+                <div class="chat-meta">
+                    <span class="chat-time">10:42</span>
+                    <span class="unread-badge">1</span>
+                </div>
+            </div>
+
+            <!-- Conversation 2 (Lue) -->
+            <div class="chat-item" onclick="openMobileChat()">
+                <img src="https://www.hebergeur-image.fr/uploads/20260314/cc16ec447d28a97cee57983b6920f82660ee72ef.jpg" alt="Sophie_99" class="chat-avatar">
+                <div class="chat-preview">
+                    <span class="chat-name">Sophie_99</span>
+                    <span class="chat-last-msg">On se voit demain pour le projet ?</span>
+                </div>
+                <div class="chat-meta">
+                    <span class="chat-time">Hier</span>
+                </div>
+            </div>
+
+            <!-- Conversation 3 -->
+            <div class="chat-item" onclick="openMobileChat()">
+                <div class="chat-avatar" style="background: linear-gradient(135deg, var(--purple-1), #1465FF); display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; font-size: 18px;">T</div>
+                <div class="chat-preview">
+                    <span class="chat-name">Team Tynorah</span>
+                    <span class="chat-last-msg">Bienvenue sur la plateforme !</span>
+                </div>
+                <div class="chat-meta">
+                    <span class="chat-time">Lun.</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- PANNEAU DROIT : Fenêtre de discussion -->
+        <section class="chat-window" id="chat-window">
+            <!-- Header du chat -->
+            <header class="chat-header">
+                <!-- Bouton retour (Mobile uniquement) -->
+                <button class="back-button mobile-only" onclick="closeMobileChat()" style="background: transparent; box-shadow: none;">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <img src="https://www.hebergeur-image.fr/uploads/20260311/57adf78bf8f1d8cbd151e48b9839f9eaba9f953b.jpg" alt="Avatar" class="chat-header-avatar">
+                <div class="chat-header-info">
+                    <strong>Alpha_Design</strong>
+                    <span class="status-online">En ligne</span>
+                </div>
+                <button class="icon-btn"><img src="https://img.icons8.com/ios/24/000000/info--v1.png" alt="Infos"></button>
+            </header>
+
+            <!-- Historique des messages -->
+            <div class="chat-history">
+                <div class="msg-wrapper received">
+                    <img src="https://www.hebergeur-image.fr/uploads/20260311/57adf78bf8f1d8cbd151e48b9839f9eaba9f953b.jpg" class="msg-avatar" alt="">
+                    <div class="msg-bubble">Salut ! Je viens de voir ton profil, j'adore ton travail !</div>
+                </div>
+                <div class="msg-wrapper sent">
+                    <div class="msg-bubble">Salut Alpha ! Merci beaucoup, ça fait super plaisir 😊</div>
+                </div>
+                <div class="msg-wrapper received">
+                    <img src="https://www.hebergeur-image.fr/uploads/20260311/57adf78bf8f1d8cbd151e48b9839f9eaba9f953b.jpg" class="msg-avatar" alt="">
+                    <div class="msg-bubble">Salut ! Super ton dernier post 👏</div>
+                </div>
+            </div>
+
+            <!-- Zone de saisie texte -->
+            <div class="chat-input-area">
+                <button class="icon-btn"><img src="https://img.icons8.com/ios-glyphs/24/8e8e8e/image.png" alt="Image"></button>
+                <input type="text" placeholder="Écrivez un message..." class="chat-input">
+                <button class="icon-btn" style="color: var(--purple-1); font-weight: 800;">Envoyer</button>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

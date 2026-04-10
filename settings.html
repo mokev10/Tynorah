@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Paramètres - Tynorah</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="feed-body settings-page">
+
+    <div class="settings-layout">
+        
+        <aside class="settings-sidebar">
+            <header class="sidebar-header">
+                <a href="menu.html" class="back-button" aria-label="Retour au menu">‹</a>
+                <div class="settings-title">PARAMÈTRES</div>
+            </header>
+
+            <nav class="settings-list" role="tablist">
+                <button class="s-row tab-btn active" data-target="profile-view" role="tab" aria-selected="true">
+                    <img src="https://img.icons8.com/material-rounded/24/user.png" alt="">
+                    <span class="s-label">Mon Profil</span>
+                    <span class="s-chevron">›</span>
+                </button>
+
+                <button class="s-row tab-btn" data-target="info-view" role="tab" aria-selected="false">
+                    <img src="https://img.icons8.com/external-vectorslab-glyph-vectorslab/24/external-User-Security-gdpr-vectorslab-glyph-vectorslab.png" alt="">
+                    <span class="s-label">Infos personnelles</span>
+                    <span class="s-chevron">›</span>
+                </button>
+
+                <button class="s-row tab-btn" data-target="privacy-view" role="tab" aria-selected="false">
+                    <img src="https://img.icons8.com/material-rounded/24/lock.png" alt="">
+                    <span class="s-label">Confidentialité</span>
+                    <span class="s-chevron">›</span>
+                </button>
+
+                <button class="s-row tab-btn" data-target="security-view" role="tab" aria-selected="false">
+                    <img src="https://img.icons8.com/material-rounded/24/shield.png" alt="">
+                    <span class="s-label">Sécurité</span>
+                    <span class="s-chevron">›</span>
+                </button>
+
+                <button class="s-row tab-btn" data-target="notif-view" role="tab" aria-selected="false">
+                    <img src="https://img.icons8.com/external-kmg-design-glyph-kmg-design/24/external-notification-user-interface-kmg-design-glyph-kmg-design.png" alt="">
+                    <span class="s-label">Notifications</span>
+                    <span class="s-chevron">›</span>
+                </button>
+
+                <div class="s-divider"></div>
+
+                <a href="index.html" class="s-row logout" role="button">
+                    <img src="https://img.icons8.com/material-sharp/24/exit.png" alt="">
+                    <span class="s-label1">Déconnexion</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="settings-display" id="settings-display">
+            <button class="mobile-back-btn" id="mobile-back-btn">
+                ‹ Retour aux paramètres
+            </button>
+
+            <div id="profile-view" class="content-pane active">
+                <div class="breadcrumb">Paramètres / <span>Mon Profil</span></div>
+                <h2 class="section-title">Gérer mon profil</h2>
+
+                <div class="profile-editor">
+                    <div class="avatar-upload">
+                        <div class="avatar-preview">
+                            <img src="https://via.placeholder.com/100" id="imagePreview" alt="Profile">
+                            <label for="imageUpload" class="upload-badge">
+                                <img src="https://img.icons8.com/material-rounded/24/camera.png" alt="">
+                            </label>
+                        </div>
+                        <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" style="display: none;">
+                        <p class="upload-hint">Cliquez sur l'icône pour changer la photo</p>
+                    </div>
+
+                    <form class="profile-form">
+                        <div class="form-group">
+                            <label>Nom d'utilisateur</label>
+                            <div class="input-wrapper">
+                                <input type="text" placeholder="@votre_pseudo" value="@ton_pseudo">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Bio</label>
+                            <div class="input-wrapper">
+                                <textarea placeholder="Parlez-nous de vous..." rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="save-btn">Enregistrer les modifications</button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="info-view" class="content-pane">
+                <div class="breadcrumb">Paramètres / <span>Infos personnelles</span></div>
+                <h2>Mes informations</h2>
+                <p>Gérez vos données personnelles et emails.</p>
+            </div>
+
+            </main>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

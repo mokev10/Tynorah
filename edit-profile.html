@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier le profil - Tynorah</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="feed-body">
+
+    <header class="profile-header-top">
+        <a href="profile.html" class="back-button" aria-label="Annuler">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+        </a>
+        <div class="profil">MODIFIER</div>
+        <div style="width: 40px;"></div> </header>
+
+    <main class="edit-profile-container">
+        
+        <div class="edit-avatar-section">
+            <img src="https://www.hebergeur-image.fr/uploads/20260313/7fda78c458b908a583a8f4c1592685997fe40370.jpg" alt="Avatar" class="profile-avatar-small">
+            <button class="change-photo-btn">Modifier la photo de profil</button>
+        </div>
+
+        <div class="edit-form">
+            <div class="input-group">
+                <label for="edit-username">Nom d'utilisateur</label>
+                <input type="text" id="edit-username" placeholder="Ton nom d'affichage...">
+            </div>
+
+            <div class="input-group">
+                <label for="edit-bio">Bio</label>
+                <textarea id="edit-bio" rows="4" placeholder="Raconte quelque chose sur toi..."></textarea>
+                <small class="char-count">Le lien #comeup sera conservé si tu le souhaites.</small>
+            </div>
+
+            <button id="save-profile" class="save-btn-final">
+                Enregistrer les modifications
+            </button>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

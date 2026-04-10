@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil - Tynorah</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="feed-body profile-page">
+
+  <main class="profile-container">
+
+    <header class="profile-header-top">
+      <a href="feed.html" class="back-button" aria-label="Retour au fil d'actualité">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </a>
+      <h2 class="profil-title">PROFIL</h2>
+      <div class="header-spacer"></div>
+    </header>
+    
+    <header class="profile-header">
+      <div class="profile-avatar-wrapper">
+        <img src="https://www.hebergeur-image.fr/uploads/20260313/7fda78c458b908a583a8f4c1592685997fe40370.jpg" alt="Avatar" class="profile-avatar">
+      </div>
+
+      <div class="profile-info">
+        <div class="info-top">
+          <h1 class="profile-username" id="display-username">Maelo freelance</h1>
+          
+          <div class="profile-actions-desktop">
+            <button class="btn-profile" id="open-edit">Modifier profil</button>
+            <button class="btn-profile" id="share-profile-btn">
+              Partager profil
+              <img src="https://img.icons8.com/external-line-adri-ansyah/24/external-interface-basic-ui-line-adri-ansyah-21.png" alt="Partager" class="btn-icon">
+            </button>
+          </div>
+        </div>
+
+        <ul class="profile-stats">
+          <li><strong>128</strong> publications</li>
+          <li><button id="open-followers" class="link-btn"><strong>1.2k</strong> abonnés</button></li>
+          <li><button id="open-following" class="link-btn"><strong>500</strong> abonnements</button></li>
+        </ul>
+
+        <div class="profile-bio">
+          <p id="display-bio">
+            Bonjour, je reste disponible pour ajuster l'offre selon vos attentes. eeeee<br>
+            <a href="#">github.com/alexdev</a>
+          </p>
+        </div>
+        
+        <div class="profile-actions-mobile">
+          <button class="btn-profile" id="open-edit-mobile">Modifier profil</button>
+          <button class="btn-profile" id="share-profile-btn-mobile">
+            Partager profil
+            <img src="https://img.icons8.com/external-line-adri-ansyah/24/external-interface-basic-ui-line-adri-ansyah-21.png" alt="Partager" class="btn-icon">
+          </button>
+        </div>
+      </div>
+    </header>
+
+   <nav class="profile-tabs">
+  <a href="#tab-publications" class="tab active">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 13h-8v8h8v-8zM22 3h-8v8h8V3zM10 13H2v8h8v-8zM10 3H2v8h8V3z"></path></svg>
+    <span>PUBLICATIONS</span>
+  </a>
+  <a href="#tab-reels" class="tab">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 15.5v-7L16 12l-6 3.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>
+    <span>REELS</span>
+  </a>
+  <a href="#tab-saved" class="tab">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"></path></svg>
+    <span>ENREGISTRÉ</span>
+  </a>
+  <a href="#tab-tagged" class="tab">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"></path></svg>
+    <span>IDENTIFIÉ</span>
+  </a>
+</nav>
+
+<section id="tab-publications" class="tab-content active">
+  <div class="profile-grid">
+    <div class="profile-grid-item"><img src="https://www.hebergeur-image.fr/uploads/20260313/4003881aa9cb360e3e2102a1cc715ac51633469b.jpg" alt="Post"></div>
+    <div class="profile-grid-item"><img src="https://www.hebergeur-image.fr/uploads/20260313/09ef2c8f156830854ce1547d05e18cb25b275d2c.jpg" alt="Post"></div>
+  </div>
+</section>
+
+<section id="tab-reels" class="tab-content">
+  <div class="profile-grid">
+    <div class="profile-grid-item"><img src="https://www.hebergeur-image.fr/uploads/20260314/cc16ec447d28a97cee57983b6920f82660ee72ef.jpg" alt="Reel"></div>
+    <div class="profile-grid-item"><img src="https://www.hebergeur-image.fr/uploads/20260314/941d3bb0cb507c8e631aecd0ac6a08924fe0afc1.jpg" alt="Reel"></div>
+  </div>
+</section>
+
+<section id="tab-saved" class="tab-content">
+  <div class="profile-grid">
+    <div class="profile-grid-item"><img src="https://www.hebergeur-image.fr/uploads/20260314/edbf6ea3640d4cd22187e2e2d1fc047758004bcc.jpg" alt="Saved"></div>
+    <div class="profile-grid-item"><img src="https://www.hebergeur-image.fr/uploads/20260314/7cbf5f117984c98192472e73be28816548990494.jpg" alt="Saved"></div>
+  </div>
+</section>
+
+<section id="tab-tagged" class="tab-content">
+  <div class="profile-grid">
+    <div class="profile-grid-item"><img src="https://www.hebergeur-image.fr/uploads/20260314/05f1d6154115c2bc8b09db42f50d9cfc32e5e863.jpg" alt="Tagged"></div>
+    <div class="profile-grid-item"><img src="https://www.hebergeur-image.fr/uploads/20260314/583d2967971ff9d49277a7052ce9084ec142403e.jpg" alt="Tagged"></div>
+  </div>
+</section>
+
+  </main>
+
+  <div id="stats-modal" class="modal-overlay">
+    <div class="modal-content stats-content">
+      <header class="modal-header">
+        <h3 id="stats-title">Abonnés</h3>
+        <button id="close-stats" class="close-btn">✕</button>
+      </header>
+      <div class="stats-list" id="stats-list"></div>
+    </div>
+  </div>
+
+  <div id="edit-modal" class="modal-overlay">
+    <div class="modal-content">
+      <header class="modal-header">
+        <h3>Modifier le profil</h3>
+        <button id="close-modal" class="close-btn">✕</button>
+      </header>
+      <form class="edit-form">
+        <div class="input-group">
+          <label for="edit-username">Nom d'utilisateur</label>
+          <input type="text" id="edit-username">
+        </div>
+        <div class="input-group">
+          <label for="edit-bio">Bio</label>
+          <textarea id="edit-bio" rows="4"></textarea>
+        </div>
+        <button type="button" id="save-profile" class="save-btn-final">Enregistrer</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
