@@ -1,5 +1,5 @@
 # index.py
-# Point d'entrée Streamlit sans barre latérale de navigation.
+# Point d'entrée Streamlit. Routeur central qui charge dynamiquement signup/forgot/feed.
 # Usage: streamlit run index.py
 
 import streamlit as st
@@ -7,7 +7,7 @@ import importlib.util
 from pathlib import Path
 
 st.set_page_config(
-    page_title="TYNORA SIGN IN",
+    page_title="TYNORAH",
     page_icon="https://img.icons8.com/ios-filled/50/t-key.png",
     layout="wide",
     initial_sidebar_state="collapsed",
@@ -16,7 +16,10 @@ st.set_page_config(
 BASE_DIR = Path(__file__).parent
 
 def load_module_and_show(module_name: str):
-    """Charge dynamiquement module_name.py et appelle sa fonction show()."""
+    """
+    Charge dynamiquement module_name.py depuis le dossier courant et appelle sa fonction show().
+    Le module doit définir une fonction show().
+    """
     module_path = BASE_DIR / f"{module_name}.py"
     if not module_path.exists():
         st.error(f"Page introuvable: {module_name}.py")
@@ -34,7 +37,10 @@ def load_module_and_show(module_name: str):
         st.exception(e)
 
 def get_page_param(default="signin"):
-    """Récupère le paramètre 'page' depuis l'URL de façon sûre, avec fallback."""
+    """
+    Récupère le paramètre 'page' depuis l'URL de façon sûre.
+    Si st.experimental_get_query_params lève une erreur, on utilise st.session_state comme fallback.
+    """
     try:
         query = st.experimental_get_query_params()
         page = query.get("page", [default])[0]
@@ -42,7 +48,6 @@ def get_page_param(default="signin"):
         st.session_state.page = page
         return page
     except Exception:
-        # fallback : utiliser st.session_state si query params indisponible
         if "page" not in st.session_state:
             st.session_state.page = default
         return st.session_state.page
@@ -91,8 +96,8 @@ if page == "signin":
 
         <div style="display: flex; justify-content: space-between; align-items: flex-end;">
           <label for="login-password">Password</label>
-          <!-- navigation via query param -->
-          <a href="?page=forgot" class="signin-link-small">Forgot password?</a>
+          <!-- navigation via query param, target top pour sortir de l'iframe -->
+          <a href="?page=forgot" target="_top" class="signin-link-small">Forgot password?</a>
         </div>
         <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="•••••••••••••" required>
 
@@ -104,12 +109,13 @@ if page == "signin":
         <button class="btn" type="submit">SIGN IN</button>
 
         <p class="small">
-          Don't have an account? <a href="?page=signup" class="signin-link">Sign up</a>
+          Don't have an account? <a href="?page=signup" target="_top" class="signin-link">Sign up</a>
         </p>
       </form>
     </div>
 
     <script>
+      // Centrage du container
       function centerContainer() {
         const container = document.getElementById('auth-container');
         if (!container) return;
@@ -125,6 +131,7 @@ if page == "signin":
       window.addEventListener('load', centerContainer);
       window.addEventListener('resize', centerContainer);
 
+      // Soumission : navigation du top window vers ?page=feed
       function handleSubmit(e) {
         e.preventDefault();
         const email = document.getElementById('login-email').value.trim();
@@ -133,8 +140,13 @@ if page == "signin":
           alert("Veuillez entrer vos identifiants.");
           return false;
         }
-        // navigation via query param -> index.py routeur prendra page=feed
-        window.location.search = '?page=feed';
+        // Forcer la navigation du top-level window (pour que index.py voie le query param)
+        try {
+          window.top.location.search = '?page=feed';
+        } catch (err) {
+          // fallback
+          window.location.search = '?page=feed';
+        }
         return false;
       }
     </script>
