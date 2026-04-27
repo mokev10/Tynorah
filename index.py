@@ -1,11 +1,12 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-def main():
-    # Configuration de la page
-    st.set_page_config(page_title="Tynorah Login", layout="centered")
+def signup_page():
+    # Configuration de la page Streamlit
+    st.set_page_config(page_title="Tynorah — Sign Up", layout="centered")
 
-    # Ton code HTML (nettoyé des guillemets inutiles au milieu des strings)
+    # Contenu HTML/CSS
+    # Les liens href="index.html" sont devenus href="index" (ou le nom de votre fichier page)
     html_content = """
     <!DOCTYPE html>
     <html lang="fr">
@@ -17,45 +18,55 @@ def main():
           margin: 0;
           height: 100vh;
           background: #f5f5f5;
-          font-family: sans-serif;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
           display: flex;
           justify-content: center;
           align-items: center;
         }
         .container {
           width: 450px;
-          max-width: 90vw;
+          max-width: 92vw;
           background: #fff;
           border-radius: 40px;
           box-shadow: 0 6px 18px rgba(0,0,0,0.1);
           padding: 40px;
-          text-align: center;
+          box-sizing: border-box;
         }
-        .brand { font-weight: bold; letter-spacing: 2px; color: #333; margin-bottom: 10px; }
-        h1 { margin: 0; font-size: 24px; }
-        .subtitle { color: #666; font-size: 14px; margin-bottom: 30px; }
-        form { text-align: left; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px; }
-        input[type="email"], input[type="password"] {
+        .header { text-align: center; margin-bottom: 30px; }
+        .brand { font-weight: bold; letter-spacing: 2px; color: #333; margin-bottom: 5px; }
+        h1 { margin: 0; font-size: 22px; text-transform: uppercase; }
+        .subtitle { color: #888; font-size: 13px; margin-top: 5px; }
+        
+        label { display: block; margin: 15px 0 5px; font-weight: 600; font-size: 12px; color: #444; }
+        input {
           width: 100%;
           padding: 12px;
-          margin-bottom: 20px;
-          border: 1px solid #ddd;
-          border-radius: 8px;
+          border: 1px solid #eee;
+          border-radius: 10px;
+          background: #f9f9f9;
           box-sizing: border-box;
         }
         .btn {
           width: 100%;
-          padding: 12px;
+          padding: 14px;
           background: #000;
           color: #fff;
           border: none;
-          border-radius: 25px;
+          border-radius: 30px;
           cursor: pointer;
           font-weight: bold;
+          margin-top: 25px;
+          transition: 0.3s;
         }
-        .small { font-size: 12px; margin-top: 20px; color: #666; }
-        .signin-link { color: #007bff; text-decoration: none; }
+        .btn:hover { background: #333; }
+        
+        .small { text-align: center; font-size: 12px; margin-top: 20px; color: #777; }
+        .signin-link { 
+            color: #000; 
+            font-weight: bold; 
+            text-decoration: none; 
+            border-bottom: 1px solid #000;
+        }
       </style>
     </head>
     <body>
@@ -63,42 +74,44 @@ def main():
     <div class="container">
       <header class="header">
         <div class="brand">TYNORAH</div>
-        <h1>LOGIN</h1>
-        <p class="subtitle">Enter your details to access your account</p>
+        <h1>CREATE ACCOUNT</h1>
+        <p class="subtitle">Join us to start your journey</p>
       </header>
 
-      <form id="login-form">
-        <label for="login-email">Email</label>
-        <input id="login-email" type="email" placeholder="example@email.com" required>
+      <form id="signup-form">
+        <label>Full Name</label>
+        <input type="text" placeholder="John Doe" required>
 
-        <div style="display: flex; justify-content: space-between;">
-          <label>Password</label>
-          <a href="#" class="signin-link" style="font-size: 11px;">Forgot password?</a>
-        </div>
-        <input id="login-password" type="password" placeholder="•••••••••••••" required>
+        <label>Email</label>
+        <input type="email" placeholder="example@email.com" required>
 
-        <button class="btn" type="submit">SIGN IN</button>
+        <label>Password</label>
+        <input type="password" placeholder="•••••••••••••" required>
 
+        <button class="btn" type="submit">SIGN UP</button>
+
+        <!-- Transformation demandée : index.html -> index.py -->
         <p class="small">
-          Don't have an account? <a href="#" class="signin-link">Sign up</a>
+          Already have an account? <a href="index" target="_self" class="signin-link">Sign in</a>
         </p>
       </form>
     </div>
 
     <script>
-      document.getElementById('login-form').addEventListener('submit', function(e) {
+      document.getElementById('signup-form').addEventListener('submit', function(e) {
         e.preventDefault();
-        const email = document.getElementById('login-email').value;
-        alert("Tentative de connexion pour : " + email);
-        // Note: window.location.href ne fonctionnera que si le fichier existe
+        alert("Account created successfully!");
+        // Redirection vers index.py après succès
+        window.parent.location.assign("index"); 
       });
     </script>
+
     </body>
     </html>
     """
 
-    # Affichage du composant HTML dans Streamlit
-    components.html(html_content, height=600, scrolling=False)
+    # Affichage
+    components.html(html_content, height=700)
 
 if __name__ == "__main__":
-    main()
+    signup_page()
