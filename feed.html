@@ -1,163 +1,60 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tynorah - Accueil</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body class="feed-body">
+# feed.py
+# Module page "feed" simple. Expose show().
 
-  <header class="main-header">
-    <div class="brand">TYNORAH</div>
+import streamlit as st
+import streamlit.components.v1 as components
 
-    <div class="search-wrapper" id="searchWrapper">
-        <div class="search-close" id="closeSearch">&times;</div>
-        
-        <div class="search-section" style="width: 100%; max-width: 600px; margin: 40px auto; padding: 20px;">
-          
-          <div class="search-bar-wrapper" style="display: flex; align-items: center; background: #f0f2f5; padding: 10px 15px; border-radius: 20px; margin-bottom: 25px;">
-            <i class="fa-solid fa-magnifying-glass" style="color: #737373; margin-right: 10px;"></i>
-            <input type="text" id="search-input" placeholder="Search creators, hashtags or tech..." autocomplete="off" style="border: none; background: transparent; outline: none; width: 100%;">
+def show():
+    # Ici on peut vérifier st.session_state pour une authentification réelle.
+    # Pour prototype, on affiche un feed simulé.
+    st.markdown("<style>.stApp { min-height: 100vh; }</style>", unsafe_allow_html=True)
+
+    html = """
+    <!doctype html>
+    <html lang="fr">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Tynorah — Feed</title>
+      <style>
+        html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;}
+        body{background:#f5f7fb;min-height:100vh;padding:24px;box-sizing:border-box;}
+        .card{max-width:900px;margin:0 auto;background:#fff;border-radius:12px;padding:20px;box-shadow:0 8px 30px rgba(2,6,23,0.06);}
+        .brand{font-weight:800;letter-spacing:4px;color:#111827;margin-bottom:6px;}
+        .title{font-size:22px;font-weight:800;margin-bottom:8px;}
+        .post{background:#fbfdff;border-radius:10px;padding:12px;margin-bottom:12px;border:1px solid rgba(15,23,36,0.04);}
+        .post-header{color:#6b7280;font-size:13px;margin-bottom:6px;}
+        .post-body{font-size:15px;color:#0f1724;}
+        .btn-logout{display:inline-block;margin-top:12px;padding:10px 14px;border-radius:8px;background:#ef4444;color:#fff;text-decoration:none;font-weight:700;}
+      </style>
+    </head>
+    <body>
+      <div class="card">
+        <div class="brand">TYNORAH</div>
+        <div class="title">Welcome to your feed</div>
+        <div class="muted">This is a simulated feed for the prototype.</div>
+
+        <div style="margin-top:16px;">
+          <div class="post">
+            <div class="post-header"><strong>@you</strong> · 2h</div>
+            <div class="post-body">Post exemple #1 — Ceci est un contenu de démonstration.</div>
           </div>
-          
-          <div class="search-results" id="suggestionsDropdown">
-            <p class="small" style="text-align: left; margin-bottom: 15px; color: #737373; font-weight: 600;">Recent searches</p>
-            <div class="user-info" style="margin-bottom: 15px; display: flex; align-items: center;">
-              <div class="avatar" style="background: #ddd; width: 40px; height: 40px; border-radius: 50%;"></div>
-              <span class="username" style="margin-left: 10px; font-weight: 500;">WebArchitect_99</span>
-            </div>
-            <div class="user-info" style="margin-bottom: 25px; display: flex; align-items: center;">
-              <div class="avatar" style="background: #ddd; width: 40px; height: 40px; border-radius: 50%;"></div>
-              <span class="username" style="margin-left: 10px; font-weight: 500;">UI_Master</span>
-            </div>
-
-            <div class="suggestion-section">
-                <p class="small" style="text-align: left; margin-bottom: 15px; color: #737373; font-weight: 600;">Recherches populaires</p>
-                <div class="suggestion-item" style="padding: 8px 0;"><span>#</span> TynorahDev</div>
-                <div class="suggestion-item" style="padding: 8px 0;"><span>#</span> DesignConcept</div>
-            </div>
+          <div class="post">
+            <div class="post-header"><strong>@you</strong> · 4h</div>
+            <div class="post-body">Post exemple #2 — Un autre contenu de démonstration.</div>
+          </div>
+          <div class="post">
+            <div class="post-header"><strong>@you</strong> · 1d</div>
+            <div class="post-body">Post exemple #3 — Prototype Streamlit.</div>
           </div>
         </div>
-    </div>
 
-    <nav class="nav-center">
-        <a href="feed.html" class="nav-item active">
-            <img src="https://img.icons8.com/external-solid-kawalan-studio/36/external-home-user-interface-solid-kawalan-studio.png" alt="Accueil">
-            <span class="nav-label">Home</span>
-        </a>
-
-        <a href="#" class="nav-item" id="search-nav-btn">
-            <img src="https://img.icons8.com/external-others-inmotus-design/36/external-Magnifier-find-glass-others-inmotus-design-48.png" alt="Search">
-            <span class="nav-label">Search</span>
-        </a>
-
-        <a href="#" class="nav-item">
-            <img src="https://img.icons8.com/external-anggara-glyph-anggara-putra/36/external-add-social-media-interface-anggara-glyph-anggara-putra.png" alt="Create">
-            <span class="nav-label">Create</span>
-        </a>
-
-        <a href="#" class="nav-item">
-            <img src="https://img.icons8.com/external-smashingstocks-glyph-smashing-stocks/36/external-Bell-education-and-learning-smashingstocks-glyph-smashing-stocks.png" alt="Notifications">
-            <span class="nav-label">Notifications</span>
-            <span class="badge">5</span>
-        </a>
-
-        <a href="messages.html" class="nav-item">
-            <img src="https://img.icons8.com/ios/36/facebook-messenger--v1.png" alt="Messages">
-            <span class="nav-label">Messages</span>
-            <span class="badge">3</span>
-        </a>
-
-        <a href="profile.html" class="nav-item" id="profile-link">
-            <img src="https://img.icons8.com/external-tanah-basah-basic-outline-tanah-basah/36/external-user-date-and-time-tanah-basah-basic-outline-tanah-basah.png" alt="Profil">
-            <span class="nav-label">Profile</span>
-        </a>
-
-        <a href="menu.html" class="nav-item">
-            <img src="https://img.icons8.com/fluency-systems-regular/36/xbox-menu.png" alt="Menu">
-            <span class="nav-label">Menu</span>
-        </a>
-    </nav>
-
-    <div class="user-zone">
-        <img src="https://www.hebergeur-image.fr/uploads/20260311/3c5c3ff0f1273dd42cfa2094b3bd9355d8735154.jpg" class="mini-avatar" alt="Avatar">
-        <span class="user-name">Mon Profil</span>
-    </div>
-  </header>
-
-  <main class="feed-container">
-    
-    <section class="create-post-card">
-      <div class="create-top">
-        <img src="https://www.hebergeur-image.fr/uploads/20260311/3c5c3ff0f1273dd42cfa2094b3bd9355d8735154.jpg" class="mini-avatar" alt="Avatar">
-        <button class="create-trigger" id="create-post-trigger">Quoi de neuf ?</button>
+        <div style="margin-top:12px;">
+          <a href="?page=signin" target="_top" class="btn-logout">Se déconnecter</a>
+        </div>
       </div>
-      
-      <div class="create-divider"></div>
+    </body>
+    </html>
+    """
 
-      <div class="create-options">
-        <button class="opt-btn btn-photo" id="photo-post-trigger">
-          <img src="https://img.icons8.com/ios-filled/24/camera--v3.png" class="opt-icon" alt="Photo">
-          <span>Photo</span>
-        </button>
-        <button class="opt-btn btn-article" id="article-post-trigger">
-          <img src="https://img.icons8.com/ios/24/hand-with-pen.png" class="opt-icon" alt="Article">
-          <span>Article</span>
-        </button>
-      </div>
-    </section>
-
-    <article class="post-card">
-        <div class="post-header">
-            <div class="user-info">
-                <img src="https://www.hebergeur-image.fr/uploads/20260311/3c5c3ff0f1273dd42cfa2094b3bd9355d8735154.jpg" class="mini-avatar" alt="Avatar">
-                <span class="user-name">Tynorah_User</span>
-            </div>
-        </div>
-        <div class="post-content">
-            <p>Nouveau style, nouvelle aventure ! ✨</p>
-            <div class="post-media-container">
-                <img src="https://www.hebergeur-image.fr/uploads/20260311/f9a54bbe7b71318d585d57c09bd200cd1e1c11e5.jpg" alt="Post" class="post-image">
-            </div>
-        </div>
-        <div class="post-actions">
-            <button class="action-btn heart-btn" onclick="toggleLike(this)">
-                <img src="https://img.icons8.com/ios-glyphs/24/hearts.png" data-inactive="https://img.icons8.com/ios-glyphs/24/hearts.png" data-active="https://img.icons8.com/emoji/24/heart-suit.png" alt="Like">
-            </button>
-            <button class="action-btn comment-toggle-btn">
-                <img src="https://img.icons8.com/ios/24/topic--v1.png" alt="Commentaire">
-            </button>
-            <button class="action-btn"><img src="https://img.icons8.com/external-creatype-outline-colourcreatype/24/external-share-user-interface-creatype-outline-colourcreatype.png" alt="Partager"></button>
-        </div>
-
-        <div class="comments-section" style="display: none; padding: 15px; border-top: 1px solid #dbdbdb;">
-            <div class="comments-list" style="margin-bottom: 10px;"></div>
-            <div style="display: flex; gap: 10px;">
-                <input type="text" class="comment-input" placeholder="Ajouter un commentaire..." style="flex: 1; padding: 8px; border-radius: 20px; border: 1px solid #dbdbdb;">
-                <button class="publish-comment-btn" style="background: var(--purple-1); color: white; border: none; padding: 5px 15px; border-radius: 20px; cursor: pointer;">Publier</button>
-            </div>
-        </div>
-    </article>
-
-    <article class="post-card">
-        <div class="post-header">
-            <div class="user-info">
-                <img src="https://www.hebergeur-image.fr/uploads/20260311/3c5c3ff0f1273dd42cfa2094b3bd9355d8735154.jpg" class="mini-avatar" alt="Avatar">
-                <span class="user-name">Alpha_Design</span>
-            </div>
-        </div>
-        <div class="post-content">
-            <p>Focus sur les détails. 📸 #Photography</p>
-            <div class="post-media-container">
-                <img src="https://www.hebergeur-image.fr/uploads/20260311/57adf78bf8f1d8cbd151e48b9839f9eaba9f953b.jpg" alt="Post" class="post-image">
-            </div>
-        </div>
-    </article>
-
-  </main>
-
-  <script src="script.js"></script>
-</body>
-</html>
+    components.html(html, height=900, scrolling=True)
