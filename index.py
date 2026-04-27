@@ -1,108 +1,104 @@
-# Generated Python code from HTML
-def generate_html():
-    """Function that returns the HTML content"""
-    from html import escape
+import streamlit as st
+import streamlit.components.v1 as components
 
-    return """\
-<!DOCTYPE html>\n"
-        "<html lang=\"fr\">\n"
-        "<head>\n"
-        "  <meta charset=\"utf-8\">\n"
-        "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
-        "  <title>Tynorah — Sign In</title>\n"
-        "  <link rel=\"stylesheet\" href=\"style.css\">\n"
-        "  <style>\n"
-        "    body {\n"
-        "      margin: 0;\n"
-        "      height: 100vh;\n"
-        "      background: #f5f5f5;\n"
-        "      position: relative;\n"
-        "    }\n"
-        "    .container {\n"
-        "      width: 450px;\n"
-        "      max-width: 92vw;\n"
-        "      background: #fff;\n"
-        "      border-radius: 60px;\n"
-        "      box-shadow: 0 6px 18px rgba(0,0,0,0.1);\n"
-        "      position: absolute; /* nécessaire pour JS */\n"
-        "      padding: 20px;\n"
-        "    }\n"
-        "  </style>\n"
-        "</head>\n"
-        "<body>\n"
-        "\n"
-        "<div class=\"container\">\n"
-        "  <header class=\"header\">\n"
-        "    <div class=\"brand\">TYNORAH</div>\n"
-        "    <h1>LOGIN</h1>\n"
-        "    <p class=\"subtitle\">Enter your details to access your account</p>\n"
-        "  </header>\n"
-        "\n"
-        "  <form id=\"login-form\" class=\"content\" action=\"#\" method=\"POST\">\n"
-        "    <label for=\"login-email\">Email</label>\n"
-        "    <input id=\"login-email\" name=\"email\" type=\"email\" autocomplete=\"username\" placeholder=\"example@email.com\" required>\n"
-        "\n"
-        "    <div style=\"display: flex; justify-content: space-between; align-items: flex-end;\">\n"
-        "      <label for=\"login-password\">Password</label>\n"
-        "      <a href=\"forgot-password.html\" class=\"signin-link\" style=\"font-size: 11px;\">Forgot password?</a>\n"
-        "    </div>\n"
-        "    <input id=\"login-password\" name=\"password\" type=\"password\" autocomplete=\"current-password\" placeholder=\"•••••••••••••\" required>\n"
-        "\n"
-        "    <div class=\"terms\">\n"
-        "      <input id=\"remember\" type=\"checkbox\">\n"
-        "      <label for=\"remember\" class=\"terms-label\">Remember me</label>\n"
-        "    </div>\n"
-        "\n"
-        "    <button class=\"btn\" type=\"submit\" style=\"margin-top: 30px;\">SIGN IN</button>\n"
-        "\n"
-        "    <p class=\"small\">\n"
-        "      Don\'t have an account? <a href=\"signup.html\" class=\"signin-link\">Sign up</a>\n"
-        "    </p>\n"
-        "  </form>\n"
-        "</div>\n"
-        "\n"
-        "<script>\n"
-        "  // Fonction pour centrer le container\n"
-        "  function centerContainer() {\n"
-        "    const container = document.querySelector(\'.container\');\n"
-        "    const winWidth = window.innerWidth;\n"
-        "    const winHeight = window.innerHeight;\n"
-        "    const contWidth = container.offsetWidth;\n"
-        "    const contHeight = container.offsetHeight;\n"
-        "\n"
-        "    const left = (winWidth - contWidth) / 2;\n"
-        "    const top = (winHeight - contHeight) / 2;\n"
-        "\n"
-        "    container.style.left = left + \'px\';\n"
-        "    container.style.top = top + \'px\';\n"
-        "  }\n"
-        "\n"
-        "  window.addEventListener(\'load\', centerContainer);\n"
-        "  window.addEventListener(\'resize\', centerContainer);\n"
-        "\n"
-        "  // Gestion du formulaire\n"
-        "  document.getElementById(\'login-form\').addEventListener(\'submit\', function(e) {\n"
-        "    e.preventDefault(); // empêche l\'envoi réel\n"
-        "\n"
-        "    const email = document.getElementById(\'login-email\').value.trim();\n"
-        "    const password = document.getElementById(\'login-password\').value.trim();\n"
-        "\n"
-        "    // Exemple simple de validation (à remplacer par une vraie vérification côté serveur)\n"
-        "    if (email !== \"\" && password !== \"\") {\n"
-        "      // Redirection vers feed.html si \"authentification\" réussie\n"
-        "      window.location.href = \"feed.html\";\n"
-        "    } else {\n"
-        "      alert(\"Veuillez entrer vos identifiants.\");\n"
-        "    }\n"
-        "  });\n"
-        "</script>\n"
-        "\n"
-        "</body>\n"
-        "</html>"""
+def main():
+    # Configuration de la page
+    st.set_page_config(page_title="Tynorah Login", layout="centered")
+
+    # Ton code HTML (nettoyé des guillemets inutiles au milieu des strings)
+    html_content = """
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+        body {
+          margin: 0;
+          height: 100vh;
+          background: #f5f5f5;
+          font-family: sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .container {
+          width: 450px;
+          max-width: 90vw;
+          background: #fff;
+          border-radius: 40px;
+          box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+          padding: 40px;
+          text-align: center;
+        }
+        .brand { font-weight: bold; letter-spacing: 2px; color: #333; margin-bottom: 10px; }
+        h1 { margin: 0; font-size: 24px; }
+        .subtitle { color: #666; font-size: 14px; margin-bottom: 30px; }
+        form { text-align: left; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px; }
+        input[type="email"], input[type="password"] {
+          width: 100%;
+          padding: 12px;
+          margin-bottom: 20px;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          box-sizing: border-box;
+        }
+        .btn {
+          width: 100%;
+          padding: 12px;
+          background: #000;
+          color: #fff;
+          border: none;
+          border-radius: 25px;
+          cursor: pointer;
+          font-weight: bold;
+        }
+        .small { font-size: 12px; margin-top: 20px; color: #666; }
+        .signin-link { color: #007bff; text-decoration: none; }
+      </style>
+    </head>
+    <body>
+
+    <div class="container">
+      <header class="header">
+        <div class="brand">TYNORAH</div>
+        <h1>LOGIN</h1>
+        <p class="subtitle">Enter your details to access your account</p>
+      </header>
+
+      <form id="login-form">
+        <label for="login-email">Email</label>
+        <input id="login-email" type="email" placeholder="example@email.com" required>
+
+        <div style="display: flex; justify-content: space-between;">
+          <label>Password</label>
+          <a href="#" class="signin-link" style="font-size: 11px;">Forgot password?</a>
+        </div>
+        <input id="login-password" type="password" placeholder="•••••••••••••" required>
+
+        <button class="btn" type="submit">SIGN IN</button>
+
+        <p class="small">
+          Don't have an account? <a href="#" class="signin-link">Sign up</a>
+        </p>
+      </form>
+    </div>
+
+    <script>
+      document.getElementById('login-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value;
+        alert("Tentative de connexion pour : " + email);
+        // Note: window.location.href ne fonctionnera que si le fichier existe
+      });
+    </script>
+    </body>
+    </html>
+    """
+
+    # Affichage du composant HTML dans Streamlit
+    components.html(html_content, height=600, scrolling=False)
 
 if __name__ == "__main__":
-    html = generate_html()
-    print(html)
-    # You can also write to a file:
-    # with open("output.html", "w") as f:
-    #     f.write(html)
+    main()
