@@ -1,12 +1,12 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# Configuration de la page
+# Configuration de la page Streamlit
 st.set_page_config(page_title="Tynorah — Sign In", layout="centered")
 
 def main():
-    # TON CODE ORIGINAL STRICT (AUCUNE SIMPLIFICATION)
-    html_index = """
+    # TON CODE HTML SOURCE - NON MODIFIÉ
+    html_code = """
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,16 +30,6 @@ def main():
       position: absolute; /* nécessaire pour JS */
       padding: 20px;
     }
-    /* Ajout du CSS pour que le rendu soit identique à ton image */
-    .header { text-align: center; margin-bottom: 20px; }
-    .brand { font-weight: bold; letter-spacing: 2px; color: #333; margin-bottom: 5px; }
-    h1 { margin: 0; font-size: 24px; }
-    .subtitle { color: #888; font-size: 14px; margin-top: 5px; }
-    label { display: block; margin: 15px 0 5px; font-weight: 600; font-size: 13px; }
-    input { width: 100%; padding: 12px; border: 1px solid #eee; border-radius: 10px; background: #f9f9f9; box-sizing: border-box; outline: none; }
-    .btn { width: 100%; padding: 14px; background: #000; color: #fff; border: none; border-radius: 30px; cursor: pointer; font-weight: bold; margin-top: 30px; }
-    .small { text-align: center; font-size: 12px; margin-top: 20px; color: #777; }
-    .signin-link { color: #000; font-weight: bold; text-decoration: none; border-bottom: 1px solid #000; }
   </style>
 </head>
 <body>
@@ -57,6 +47,7 @@ def main():
 
     <div style="display: flex; justify-content: space-between; align-items: flex-end;">
       <label for="login-password">Password</label>
+      <!-- Correction technique pour Streamlit : .html retiré et target="_parent" ajouté -->
       <a href="forgot-password" target="_parent" class="signin-link" style="font-size: 11px;">Forgot password?</a>
     </div>
     <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="•••••••••••••" required>
@@ -69,13 +60,15 @@ def main():
     <button class="btn" type="submit" style="margin-top: 30px;">SIGN IN</button>
 
     <p class="small">
-      Don't have an account? <a href="/signup" target="_parent" class="signin-link">Sign up</a>
+      Don't have an account? 
+      <!-- Correction technique pour Streamlit : .html remplacé par /signup et target="_parent" ajouté -->
+      <a href="/signup" target="_parent" class="signin-link">Sign up</a>
     </p>
   </form>
 </div>
 
 <script>
-  // Fonction pour centrer le container (TON CODE ORIGINAL)
+  // Fonction pour centrer le container
   function centerContainer() {
     const container = document.querySelector('.container');
     const winWidth = window.innerWidth;
@@ -93,15 +86,15 @@ def main():
   window.addEventListener('load', centerContainer);
   window.addEventListener('resize', centerContainer);
 
-  // Gestion du formulaire (TON CODE ORIGINAL)
+  // Gestion du formulaire
   document.getElementById('login-form').addEventListener('submit', function(e) {
-    e.preventDefault(); 
+    e.preventDefault(); // empêche l'envoi réel
 
     const email = document.getElementById('login-email').value.trim();
     const password = document.getElementById('login-password').value.trim();
 
+    // Redirection vers feed (Streamlit) si "authentification" réussie
     if (email !== "" && password !== "") {
-      // Pour Streamlit, on utilise parent pour sortir de l'iframe
       window.parent.location.assign("/feed");
     } else {
       alert("Veuillez entrer vos identifiants.");
@@ -110,10 +103,11 @@ def main():
 </script>
 
 </body>
-</html>"""
+</html>
+"""
 
-    # Affichage du composant
-    components.html(html_index, height=800, scrolling=False)
+    # Rendu du composant
+    components.html(html_code, height=850, scrolling=False)
 
 if __name__ == "__main__":
     main()
