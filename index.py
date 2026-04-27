@@ -1,12 +1,11 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-def signup_page():
-    # Configuration de la page Streamlit
-    st.set_page_config(page_title="Tynorah — Sign Up", layout="centered")
+def main():
+    # Configuration de la page
+    st.set_page_config(page_title="Tynorah — Sign In", layout="centered")
 
-    # Contenu HTML/CSS
-    # Les liens href="index.html" sont devenus href="index" (ou le nom de votre fichier page)
+    # Contenu HTML de la page de connexion
     html_content = """
     <!DOCTYPE html>
     <html lang="fr">
@@ -45,6 +44,7 @@ def signup_page():
           border-radius: 10px;
           background: #f9f9f9;
           box-sizing: border-box;
+          outline: none;
         }
         .btn {
           width: 100%;
@@ -56,9 +56,7 @@ def signup_page():
           cursor: pointer;
           font-weight: bold;
           margin-top: 25px;
-          transition: 0.3s;
         }
-        .btn:hover { background: #333; }
         
         .small { text-align: center; font-size: 12px; margin-top: 20px; color: #777; }
         .signin-link { 
@@ -66,6 +64,7 @@ def signup_page():
             font-weight: bold; 
             text-decoration: none; 
             border-bottom: 1px solid #000;
+            cursor: pointer;
         }
       </style>
     </head>
@@ -74,35 +73,29 @@ def signup_page():
     <div class="container">
       <header class="header">
         <div class="brand">TYNORAH</div>
-        <h1>CREATE ACCOUNT</h1>
-        <p class="subtitle">Join us to start your journey</p>
+        <h1>LOGIN</h1>
+        <p class="subtitle">Enter your details to access your account</p>
       </header>
 
-      <form id="signup-form">
-        <label>Full Name</label>
-        <input type="text" placeholder="John Doe" required>
-
+      <form id="login-form">
         <label>Email</label>
         <input type="email" placeholder="example@email.com" required>
 
         <label>Password</label>
         <input type="password" placeholder="•••••••••••••" required>
 
-        <button class="btn" type="submit">SIGN UP</button>
+        <button class="btn" type="submit">SIGN IN</button>
 
-        <!-- Transformation demandée : index.html -> index.py -->
         <p class="small">
-          Already have an account? <a href="index" target="_self" class="signin-link">Sign in</a>
+          Don't have an account? <a href="/signup" target="_parent" class="signin-link">Sign up</a>
         </p>
       </form>
     </div>
 
     <script>
-      document.getElementById('signup-form').addEventListener('submit', function(e) {
+      document.getElementById('login-form').addEventListener('submit', function(e) {
         e.preventDefault();
-        alert("Account created successfully!");
-        // Redirection vers index.py après succès
-        window.parent.location.assign("index"); 
+        alert("Login successful!");
       });
     </script>
 
@@ -110,8 +103,8 @@ def signup_page():
     </html>
     """
 
-    # Affichage
-    components.html(html_content, height=700)
+    # Affichage du HTML
+    components.html(html_content, height=600)
 
 if __name__ == "__main__":
-    signup_page()
+    main()
