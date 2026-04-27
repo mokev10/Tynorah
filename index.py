@@ -1,5 +1,5 @@
 # index.py
-# Point d'entrée Streamlit. Routeur central qui charge dynamiquement signup/forgot/feed.
+# Point d'entrée Streamlit. Routeur central sans sidebar.
 # Usage: streamlit run index.py
 
 import streamlit as st
@@ -16,10 +16,7 @@ st.set_page_config(
 BASE_DIR = Path(__file__).parent
 
 def load_module_and_show(module_name: str):
-    """
-    Charge dynamiquement module_name.py depuis le dossier courant et appelle sa fonction show().
-    Le module doit définir une fonction show().
-    """
+    """Charge dynamiquement module_name.py et appelle sa fonction show()."""
     module_path = BASE_DIR / f"{module_name}.py"
     if not module_path.exists():
         st.error(f"Page introuvable: {module_name}.py")
@@ -37,14 +34,10 @@ def load_module_and_show(module_name: str):
         st.exception(e)
 
 def get_page_param(default="signin"):
-    """
-    Récupère le paramètre 'page' depuis l'URL de façon sûre.
-    Si st.experimental_get_query_params lève une erreur, on utilise st.session_state comme fallback.
-    """
+    """Récupère le paramètre 'page' depuis l'URL de façon sûre, avec fallback sur session_state."""
     try:
         query = st.experimental_get_query_params()
         page = query.get("page", [default])[0]
-        # synchroniser st.session_state pour fallback ultérieur
         st.session_state.page = page
         return page
     except Exception:
@@ -96,7 +89,6 @@ if page == "signin":
 
         <div style="display: flex; justify-content: space-between; align-items: flex-end;">
           <label for="login-password">Password</label>
-          <!-- navigation via query param, target top pour sortir de l'iframe -->
           <a href="?page=forgot" target="_top" class="signin-link-small">Forgot password?</a>
         </div>
         <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="•••••••••••••" required>
@@ -140,11 +132,9 @@ if page == "signin":
           alert("Veuillez entrer vos identifiants.");
           return false;
         }
-        // Forcer la navigation du top-level window (pour que index.py voie le query param)
         try {
           window.top.location.search = '?page=feed';
         } catch (err) {
-          // fallback
           window.location.search = '?page=feed';
         }
         return false;
@@ -156,12 +146,11 @@ if page == "signin":
     """
     components.html(html, height=900, scrolling=True)
 
-# Si page != signin, on tente de charger un module du même nom (signup, forgot, feed, etc.)
+# Si page != signin, on tente de charger un module du même nom (signup, forgot, feed)
 else:
     allowed = {"signup", "forgot", "feed"}
     if page not in allowed:
         st.error("Page non autorisée.")
     else:
-        # Mettre à jour st.session_state.page pour fallback si experimental_get_query_params échoue plus tard
         st.session_state.page = page
         load_module_and_show(page)
