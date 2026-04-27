@@ -7,8 +7,8 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 st.set_page_config(
-    page_title="Tynorah — Sign In",
-    page_icon="https://https://img.icons8.com/external-line-zulfa-mahendra/48/external-robot-future-technology-line-zulfa-mahendra.png",
+    page_title="TYNORA SIGN IN",
+    page_icon="https://img.icons8.com/external-line-zulfa-mahendra/48/external-robot-future-technology-line-zulfa-mahendra.png",
     layout="wide",
     initial_sidebar_state="expanded",
 )
