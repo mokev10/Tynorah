@@ -5,7 +5,7 @@ import streamlit.components.v1 as components
 st.set_page_config(page_title="Tynorah — Sign In", layout="centered")
 
 def main():
-    # Ton code HTML/CSS/JS complet sans aucune simplification
+    # Code HTML/CSS/JS complet et non simplifié
     html_index = """
     <!DOCTYPE html>
     <html lang="fr">
@@ -19,7 +19,7 @@ def main():
           height: 100vh;
           background: #f5f5f5;
           position: relative;
-          font-family: sans-serif;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
           overflow: hidden;
         }
         .container {
@@ -34,7 +34,7 @@ def main():
         }
         .header {
           text-align: center;
-          margin-bottom: 20px;
+          margin-bottom: 25px;
         }
         .brand {
           font-weight: bold;
@@ -46,6 +46,7 @@ def main():
         h1 {
           margin: 0;
           font-size: 24px;
+          color: #000;
         }
         .subtitle {
           color: #888;
@@ -57,23 +58,26 @@ def main():
           margin: 15px 0 5px;
           font-weight: 600;
           font-size: 13px;
+          color: #444;
         }
         input[type="email"],
         input[type="password"] {
           width: 100%;
           padding: 12px;
           border: 1px solid #eee;
-          border-radius: 10px;
+          border-radius: 12px;
           background: #f9f9f9;
           box-sizing: border-box;
           outline: none;
+          font-size: 14px;
         }
         .terms {
           display: flex;
           align-items: center;
           gap: 8px;
-          margin-top: 15px;
-          font-size: 12px;
+          margin-top: 20px;
+          font-size: 13px;
+          color: #555;
         }
         .btn {
           width: 100%;
@@ -81,16 +85,20 @@ def main():
           background: #000;
           color: #fff;
           border: none;
-          border-radius: 30px;
+          border-radius: 35px;
           cursor: pointer;
           font-weight: bold;
           margin-top: 30px;
           text-transform: uppercase;
+          transition: background 0.3s;
+        }
+        .btn:hover {
+          background: #333;
         }
         .small {
           text-align: center;
-          font-size: 12px;
-          margin-top: 20px;
+          font-size: 13px;
+          margin-top: 25px;
           color: #777;
         }
         .signin-link {
@@ -116,6 +124,7 @@ def main():
 
         <div style="display: flex; justify-content: space-between; align-items: flex-end;">
           <label for="login-password">Password</label>
+          <!-- Correction target="_parent" pour Streamlit -->
           <a href="forgot-password" target="_parent" class="signin-link" style="font-size: 11px;">Forgot password?</a>
         </div>
         <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="•••••••••••••" required>
@@ -128,7 +137,9 @@ def main():
         <button class="btn" type="submit">SIGN IN</button>
 
         <p class="small">
-          Don't have an account? <a href="signup" target="_parent" class="signin-link">Sign up</a>
+          Don't have an account? 
+          <!-- Correction vitale : href="signup" et target="_parent" -->
+          <a href="signup" target="_parent" class="signin-link">Sign up</a>
         </p>
       </form>
     </div>
@@ -158,8 +169,8 @@ def main():
         const password = document.getElementById('login-password').value.trim();
 
         if (email !== "" && password !== "") {
-          alert("Connexion réussie pour : " + email);
-          // Redirige vers feed.py dans Streamlit
+          alert("Login successful!");
+          // Utilisation de parent pour rediriger l'application entière
           window.parent.location.assign("feed");
         } else {
           alert("Veuillez entrer vos identifiants.");
@@ -171,8 +182,8 @@ def main():
     </html>
     """
 
-    # Affichage du composant HTML
-    components.html(html_index, height=800, scrolling=False)
+    # Affichage du composant
+    components.html(html_index, height=850, scrolling=False)
 
 if __name__ == "__main__":
     main()
