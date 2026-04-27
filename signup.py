@@ -80,7 +80,7 @@ def show():
         <button class="btn" type="submit">SIGN UP</button>
 
         <p class="small">
-          Already have an account? <a href="?page=signin" class="signin-link">Sign in</a>
+          Already have an account? <a href="?page=signin" target="_top" class="signin-link">Sign in</a>
         </p>
       </form>
     </div>
@@ -98,7 +98,7 @@ def show():
       window.addEventListener('load', centerContainer);
       window.addEventListener('resize', centerContainer);
 
-      // Validation simple côté client puis navigation via query param
+      // Validation simple côté client puis navigation via query param (top window)
       function handleSubmit(e) {
         e.preventDefault();
         const firstname = document.getElementById('firstname').value.trim();
@@ -123,8 +123,12 @@ def show():
           return false;
         }
 
-        // Simuler succès -> naviguer vers feed via query param
-        window.location.search = '?page=feed';
+        // Simuler succès -> naviguer vers feed via query param sur le top window
+        try {
+          window.top.location.search = '?page=feed';
+        } catch (err2) {
+          window.location.search = '?page=feed';
+        }
         return false;
       }
     </script>
@@ -133,4 +137,4 @@ def show():
     </html>
     """
 
-    components.html(html, height=900, scrolling=True)
+    components.html(html, height=950, scrolling=True)
